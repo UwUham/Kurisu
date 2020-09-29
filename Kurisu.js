@@ -53,14 +53,17 @@ client.on('message', msg => {
   }
 
 	else if (msg.content.startsWith(`${prefix}help`)) {
-		msg.channel.send('```.r11 - Displays some common sense\n' + 
+		msg.channel.send('```.yarrharr - Displays some common sense\n' +
+		'.kurisu - sends a link to Kurisu\'s Github. May not be up to date.\n' +
 		'.warm - warms target user.\n' +
 		'.cool - cools target user.\n' +
-		'.bean - swing the beanhammer at somebody.\n' + 
-		'.pfp - show an image of your profile picture.\n' +
+		'.bean - swing the beanhammer at somebody.\n' +
 		'.headpat - give somebody a headpat uwu\n' +
-		'.gay - ha gay\n' + 
-		'.invite - type .invite help for information.```')
+		'.gay - ha gay\n' +
+		'.invite - type .invite help for information.\n' +
+		'.announce - Staff only. Causes Kurisu to speak.\n' +
+		'.yeet - Staff only. Bans target member.\n' +
+		'.boot - Staff only. Kicks target member.```')
 		console.log(`${msg.author} used .help (general).`)
 	}
 	else if (msg.content.startsWith(`${prefix}bean`)) {
@@ -128,7 +131,63 @@ client.on('message', msg => {
 				}
 			}
 		}
-	}			
+	}
+	else if (msg.content.startsWith(`${prefix}boot`)) {
+		const author = msg.author;
+		if (author) {
+			const authmem = msg.member;
+			if (authmem) {
+				if (authmem.roles.cache.some(role => role.name === 'Staff')) {
+					const user = msg.mentions.users.first();
+					if (user) {
+		 				const member = msg.guild.member(user);
+		  				if (member) {
+							member
+			  					.kick('Optional reason that will display in the audit logs')
+			  					.then(() => {
+								msg.channel.send(`Successfully kicked ${user.tag}`);
+			  			})
+			  			.catch(err => {
+						msg.channel.send('I was unable to kick the member');
+						console.error(err);
+			  			});
+		  				} else {
+			msg.channel.send("That user isn't in this guild!");
+		  }
+		} else {
+		  msg.channel.send("Uhh, who did you want me to kick again?");
+					}
+				}
+			}
+		}
+	}
+	else if (msg.content.startsWith(`${prefix}yeet`)) {
+		const author = msg.author;
+		if (author) {
+			const authmem = msg.member;
+			if (authmem) {
+				if (authmem.roles.cache.some(role => role.name === 'Staff')) {
+					const user = msg.mentions.users.first();
+					if (user) {
+						 const member = msg.guild.member(user);
+		 				 if (member) {
+							member
+			  				.ban({
+							reason: 'They were bad!',
+			  				})
+			 				.then(() => {
+							msg.channel.send(`Successfully banned ${user.tag}`);
+			  				})
+			  				.catch(err => {
+							msg.channel.send('I was unable to ban the member');
+							console.error(err);
+			  			});
+		  } else {
+			msg.channel.send("That user isn't in this guild!");
+		  }
+		} else {
+		  msg.channel.send("Who should I ban? Coolkit again?");
+		}}}}}
 });
 
 client.login(token);
