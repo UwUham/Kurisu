@@ -16,6 +16,10 @@ client.on('message', msg => {
 
 	}
 
+	else if (msg.content.startsWith(`${prefix}kurisu`)) {
+		msg.channel.send("Kurisu, UwUham's first discord bot!")
+		msg.channel.send("https://github.com/UwUham/Kurisu")
+	}
 
 	else if (msg.content.startsWith(`${prefix}invite`)) {
 		if (msg.content.endsWith('uwuham')) {
