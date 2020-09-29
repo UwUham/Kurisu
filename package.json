@@ -1,0 +1,26 @@
+{
+  "name": "kurisu",
+  "version": "1.0.0",
+  "description": "A random discord bot",
+  "main": "Kurisu.js",
+  "scripts": {
+    "test": ".test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UwUham/Kurisu.git"
+  },
+  "keywords": [
+    "discord"
+  ],
+  "author": "UwUham",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UwUham/Kurisu/issues"
+  },
+  "homepage": "https://github.com/UwUham/Kurisu#readme",
+  "dependencies": {
+    "discord.js": "^12.3.1",
+    "dotenv": "^8.2.0"
+  }
+}
