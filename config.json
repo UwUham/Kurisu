@@ -1,4 +1,5 @@
 {
 	"prefix": ".",
-	"token": "Insert your token here"
+	"token": "Your Token Goes Here",
+	"ownerID": "Your ID Goes Here"
 }

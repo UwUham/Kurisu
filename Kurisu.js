@@ -1,9 +1,12 @@
+//Required Modules: discord.js
+
 const config = require('./config.json');
 const Discord = require('discord.js');
 const MessageEmbed = require('discord.js');
 const client = new Discord.Client();
 const token = config.token
 const prefix = config.prefix
+const ownerID = config.ownerID
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -67,7 +70,7 @@ client.on('message', msg => {
 		console.log(`${msg.author} used .help (general).`)
 	}
 	else if (msg.content.startsWith(`${prefix}bean`)) {
-	const guild = msg.guild
+	const guild = msg.guild;
 	const bean = guild.emojis.cache.first();
     const user = msg.mentions.users.first();
     if (user) {
@@ -188,6 +191,102 @@ client.on('message', msg => {
 		} else {
 		  msg.channel.send("Who should I ban? Coolkit again?");
 		}}}}}
+	else if (msg.content.startsWith(`${prefix}tinysearch`)) {
+		const msglower = msg.content.toLowerCase(); 
+		if (msglower.startsWith(`${prefix}tinysearch 3ds b`)) {
+			msg.channel.send('https://tinydb.eiphax.tech/qr/3DS_Battery_Checker.png')
+		}
+		else if (msglower.startsWith(`${prefix}tinysearch 3dsh`)) {
+			msg.channel.send('https://tinydb.eiphax.tech/qr/3DShell.png')
+		}
+		else if (msglower.startsWith(`${prefix}tinysearch 3dsi`)) {
+			msg.channel.send('https://tinydb.eiphax.tech/qr/3DSident-GUI.png')
+		}
+		else if (msglower.startsWith(`${prefix}tinysearch a`)) {
+			msg.channel.send('https://tinydb.eiphax.tech/qr/Anemone3DS.png')
+		}
+		else if (msglower.startsWith(`${prefix}tinysearch b`)) {
+			msg.channel.send('https://tinydb.eiphax.tech/qr/bootntr.png')
+		}
+		else if (msglower.startsWith(`${prefix}tinysearch ch`)) {
+			msg.channel.send('https://tinydb.eiphax.tech/qr/Checkpoint.png')
+		}
+		else if (msglower.startsWith(`${prefix}tinysearch ct`)) {
+			msg.channel.send('https://tinydb.eiphax.tech/qr/CTRXplorer.png')
+		}
+		else if (msglower.startsWith(`${prefix}tinysearch do`)) {
+			msg.channel.send('https://tinydb.eiphax.tech/qr/ddlc.png')
+		}
+		else if (msglower.startsWith(`${prefix}tinysearch e`)) {
+			msg.channel.send('https://tinydb.eiphax.tech/qr/DSES.png')
+		}
+		else if (msglower.startsWith(`${prefix}tinysearch ds`)) {
+			msg.channel.send('https://tinydb.eiphax.tech/qr/DSP1.png')
+		}
+		else if (msglower.startsWith(`${prefix}tinysearch p`)) {
+			msg.channel.send('https://tinydb.eiphax.tech/qr/FastPlayCoin.png')
+		}
+		else if (msglower.startsWith(`${prefix}tinysearch f`)) {
+			msg.channel.send('https://tinydb.eiphax.tech/qr/FBI.png')
+		}
+		else if (msglower.startsWith(`${prefix}tinysearch g`)) {
+			msg.channel.send('https://tinydb.eiphax.tech/qr/GYTB.png')
+		}
+		else if (msglower.startsWith(`${prefix}tinysearch j`)) {
+			msg.channel.send('https://tinydb.eiphax.tech/qr/JKSM.png')
+		}
+		else if (msglower.startsWith(`${prefix}tinysearch l`)) {
+			msg.channel.send('https://tinydb.eiphax.tech/qr/LeafEdit.png')
+		}
+		else if (msglower.startsWith(`${prefix}tinysearch luma l`)) {
+			msg.channel.send('https://tinydb.eiphax.tech/qr/lumalocale.png')
+		}
+		else if (msglower.startsWith(`${prefix}tinysearch luma u`)) {
+			msg.channel.send('https://tinydb.eiphax.tech/qr/lumaupdater.png')
+		}
+		else if (msglower.startsWith(`${prefix}tinysearch m`)) {
+			msg.channel.send('https://tinydb.eiphax.tech/qr/ModMoon.png')
+		}
+		else if (msglower.startsWith(`${prefix}tinysearch n`)) {
+			msg.channel.send('https://tinydb.eiphax.tech/qr/Notepad3DS.png')
+		}
+		else if (msglower.startsWith(`${prefix}tinysearch pk`)) {
+			msg.channel.send('https://tinydb.eiphax.tech/qr/PKSM.png')
+		}
+		else if (msglower.startsWith(`${prefix}tinysearch twlu`)) {
+			msg.channel.send('https://tinydb.eiphax.tech/qr/twlmenuupdater.png')
+		}
+		else if (msglower.startsWith(`${prefix}tinysearch pr`)) {
+			msg.channel.send('https://tinydb.eiphax.tech/qr/prboom3ds.png')
+		}
+		else if (msglower.startsWith(`${prefix}tinysearch s`)) {
+			msg.channel.send('https://tinydb.eiphax.tech/qr/SuperHaxagon.png')
+		}
+		else if (msglower.startsWith(`${prefix}tinysearch te`)) {
+			msg.channel.send('https://tinydb.eiphax.tech/qr/Tetris3DS.png')
+		}
+		else if (msglower.startsWith(`${prefix}tinysearch ti`)) {
+			msg.channel.send('https://tinydb.eiphax.tech/qr/tikSweep.png')
+		}
+		else if (msglower.startsWith(`${prefix}tinysearch twls`)) {
+			msg.channel.send('https://tinydb.eiphax.tech/qr/TWLSaveTool.png')
+		}
+		else if (msglower.startsWith(`${prefix}tinysearch u`)) {
+			msg.channel.send('https://tinydb.eiphax.tech/qr/Universal-Updater.png')
+		}
+		else {
+			msg.channel.send('404: Application Not Found. See a full list here: https://hastebin.com/aqudumiyat.nginx \n' +
+							 'TinyDB: https://tinydb.eiphax.tech/')
+		}
+	}
+	else if (msg.content.startsWith(`${prefix}bow`)) {
+		if (msg.author.id === ownerID) {
+			msg.channel.send(`Oh! <@${ownerID}>! Thank you for taking your time to create and host me! ~bows~`)
+		}
+		else {
+			msg.channel.send('Who do you think you are? Why would I bow for you?')
+		}
+	}
 });
 
 client.login(token);
