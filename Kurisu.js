@@ -1,5 +1,5 @@
-//Required Modules: discord.js
-
+//Required Modules: discord.js, child_process
+const exec = require('child_process')
 const config = require('./config.json');
 const Discord = require('discord.js');
 const MessageEmbed = require('discord.js');
@@ -22,6 +22,35 @@ client.on('message', msg => {
 	else if (msg.content.startsWith(`${prefix}kurisu`)) {
 		msg.channel.send("Kurisu, UwUham's first discord bot!")
 		msg.channel.send("https://github.com/UwUham/Kurisu")
+	}
+	else if (msg.content.startsWith(`${prefix}setup`)) {
+		if (msg.content.startsWith(`${prefix}setup git`)) {
+				exec("~/kurisu_update.sh", (error, stdout, stderr) => {
+				if (error) {
+					console.log(`error: ${error.message}`);
+					return;
+				}
+				if (stderr) {
+					console.log(`stderr: ${stderr}`);
+					return;
+				}
+				console.log(`stdout: ${stdout}`);
+				});
+			}
+		else if (msg.content.startsWith(`${prefix}setup restart`)) {
+			exec("sudo systemctl restart kurisu", (error, stdout, stderr) => {
+				if (error) {
+					console.log(`error: ${error.message}`);
+					return;
+				}
+				if (stderr) {
+					console.log(`stderr: ${stderr}`);
+					return;
+				}
+				console.log(`stdout: ${stdout}`);
+				});
+		}
+					
 	}
 
 	else if (msg.content.startsWith(`${prefix}invite`)) {
@@ -149,7 +178,7 @@ client.on('message', msg => {
 		 				const member = msg.guild.member(user);
 		  				if (member) {
 							member
-			  					.kick('Optional reason that will display in the audit logs')
+			  					.kick(msg.content.substr(3, (msg.content.length)))
 			  					.then(() => {
 								msg.channel.send(`Successfully kicked ${user.tag}`);
 			  			})
@@ -179,7 +208,7 @@ client.on('message', msg => {
 		 				 if (member) {
 							member
 			  				.ban({
-							reason: 'They were bad!',
+							reason: msg.content.substr(3, (msg.content.length)),
 			  				})
 			 				.then(() => {
 							msg.channel.send(`Successfully banned ${user.tag}`);
@@ -195,93 +224,9 @@ client.on('message', msg => {
 		  msg.channel.send("Who should I ban? Coolkit again?");
 		}}}}}
 	else if (msg.content.startsWith(`${prefix}tinysearch`)) {
-		const msglower = msg.content.toLowerCase(); 
-		if (msglower.startsWith(`${prefix}tinysearch 3ds b`)) {
-			msg.channel.send('https://tinydb.eiphax.tech/qr/3DS_Battery_Checker.png')
+			msg.channel.send('sorry lol but they took tinydb down like a week after i did this and im not redoing it lmao')
 		}
-		else if (msglower.startsWith(`${prefix}tinysearch 3dsh`)) {
-			msg.channel.send('https://tinydb.eiphax.tech/qr/3DShell.png')
-		}
-		else if (msglower.startsWith(`${prefix}tinysearch 3dsi`)) {
-			msg.channel.send('https://tinydb.eiphax.tech/qr/3DSident-GUI.png')
-		}
-		else if (msglower.startsWith(`${prefix}tinysearch a`)) {
-			msg.channel.send('https://tinydb.eiphax.tech/qr/Anemone3DS.png')
-		}
-		else if (msglower.startsWith(`${prefix}tinysearch b`)) {
-			msg.channel.send('https://tinydb.eiphax.tech/qr/bootntr.png')
-		}
-		else if (msglower.startsWith(`${prefix}tinysearch ch`)) {
-			msg.channel.send('https://tinydb.eiphax.tech/qr/Checkpoint.png')
-		}
-		else if (msglower.startsWith(`${prefix}tinysearch ct`)) {
-			msg.channel.send('https://tinydb.eiphax.tech/qr/CTRXplorer.png')
-		}
-		else if (msglower.startsWith(`${prefix}tinysearch do`)) {
-			msg.channel.send('https://tinydb.eiphax.tech/qr/ddlc.png')
-		}
-		else if (msglower.startsWith(`${prefix}tinysearch e`)) {
-			msg.channel.send('https://tinydb.eiphax.tech/qr/DSES.png')
-		}
-		else if (msglower.startsWith(`${prefix}tinysearch ds`)) {
-			msg.channel.send('https://tinydb.eiphax.tech/qr/DSP1.png')
-		}
-		else if (msglower.startsWith(`${prefix}tinysearch p`)) {
-			msg.channel.send('https://tinydb.eiphax.tech/qr/FastPlayCoin.png')
-		}
-		else if (msglower.startsWith(`${prefix}tinysearch f`)) {
-			msg.channel.send('https://tinydb.eiphax.tech/qr/FBI.png')
-		}
-		else if (msglower.startsWith(`${prefix}tinysearch g`)) {
-			msg.channel.send('https://tinydb.eiphax.tech/qr/GYTB.png')
-		}
-		else if (msglower.startsWith(`${prefix}tinysearch j`)) {
-			msg.channel.send('https://tinydb.eiphax.tech/qr/JKSM.png')
-		}
-		else if (msglower.startsWith(`${prefix}tinysearch l`)) {
-			msg.channel.send('https://tinydb.eiphax.tech/qr/LeafEdit.png')
-		}
-		else if (msglower.startsWith(`${prefix}tinysearch luma l`)) {
-			msg.channel.send('https://tinydb.eiphax.tech/qr/lumalocale.png')
-		}
-		else if (msglower.startsWith(`${prefix}tinysearch luma u`)) {
-			msg.channel.send('https://tinydb.eiphax.tech/qr/lumaupdater.png')
-		}
-		else if (msglower.startsWith(`${prefix}tinysearch m`)) {
-			msg.channel.send('https://tinydb.eiphax.tech/qr/ModMoon.png')
-		}
-		else if (msglower.startsWith(`${prefix}tinysearch n`)) {
-			msg.channel.send('https://tinydb.eiphax.tech/qr/Notepad3DS.png')
-		}
-		else if (msglower.startsWith(`${prefix}tinysearch pk`)) {
-			msg.channel.send('https://tinydb.eiphax.tech/qr/PKSM.png')
-		}
-		else if (msglower.startsWith(`${prefix}tinysearch twlu`)) {
-			msg.channel.send('https://tinydb.eiphax.tech/qr/twlmenuupdater.png')
-		}
-		else if (msglower.startsWith(`${prefix}tinysearch pr`)) {
-			msg.channel.send('https://tinydb.eiphax.tech/qr/prboom3ds.png')
-		}
-		else if (msglower.startsWith(`${prefix}tinysearch s`)) {
-			msg.channel.send('https://tinydb.eiphax.tech/qr/SuperHaxagon.png')
-		}
-		else if (msglower.startsWith(`${prefix}tinysearch te`)) {
-			msg.channel.send('https://tinydb.eiphax.tech/qr/Tetris3DS.png')
-		}
-		else if (msglower.startsWith(`${prefix}tinysearch ti`)) {
-			msg.channel.send('https://tinydb.eiphax.tech/qr/tikSweep.png')
-		}
-		else if (msglower.startsWith(`${prefix}tinysearch twls`)) {
-			msg.channel.send('https://tinydb.eiphax.tech/qr/TWLSaveTool.png')
-		}
-		else if (msglower.startsWith(`${prefix}tinysearch u`)) {
-			msg.channel.send('https://tinydb.eiphax.tech/qr/Universal-Updater.png')
-		}
-		else {
-			msg.channel.send('404: Application Not Found. See a full list here: https://hastebin.com/aqudumiyat.nginx \n' +
-							 'TinyDB: https://tinydb.eiphax.tech/')
-		}
-	}
+	
 	else if (msg.content.startsWith(`${prefix}bow`)) {
 		if (msg.author.id === ownerID) {
 			msg.channel.send(`Oh! <@${ownerID}>! Thank you for taking your time to create and host me! ~bows~`)
