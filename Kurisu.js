@@ -66,7 +66,10 @@ client.on('message', msg => {
 		'.invite - type .invite help for information.\n' +
 		'.announce - Staff only. Causes Kurisu to speak.\n' +
 		'.yeet - Staff only. Bans target member.\n' +
-		'.boot - Staff only. Kicks target member.```')
+		'.boot - Staff only. Kicks target member.\n' + 
+		'.tinysearch - Search TinyDB for a 3DS app. Do .tinysearch 1 for more info.\n' +
+		'.ping - What do you think it does?\n' +
+		'.bow - Honestly, just try it and see.```')
 		console.log(`${msg.author} used .help (general).`)
 	}
 	else if (msg.content.startsWith(`${prefix}bean`)) {
@@ -287,6 +290,10 @@ client.on('message', msg => {
 			msg.channel.send('Who do you think you are? Why would I bow for you?')
 		}
 	}
+	else if (msg.content.startsWith(`${prefix}ping`)) {
+		var ping = Date.now() - msg.createdTimestamp + " ms";
+		msg.channel.send(":ping_pong: Pong! `" + `${Date.now() - msg.createdTimestamp}` + " ms`");
+	  }
 });
 
 client.login(token);
