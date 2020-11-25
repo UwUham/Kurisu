@@ -61,7 +61,7 @@ client.on('message', msg => {
 		msg.channel.send('https://discord.gg/zWPWwQC')
 	}
 		else if (msg.content.endsWith('lazr')) {
-		msg.channel.send('https://discord.gg/7ECUWDp')
+		msg.channel.send('https://discord.gg/eTS6yym')
 	}
 		else if (msg.content.endsWith('homebrew')) {
 		msg.channel.send('https://discord.gg/C29hYvh')
